@@ -12,28 +12,40 @@ time_stamp = int(time.time())
 np.random.seed(0)
 turn = 60
 
-r1 = random.randint(0, 12)
-r2 = random.randint(1, 50)
+r1 = random.randint(0, 9)
+r2 = random.randint(0, 50)
 r3 = random.randint(1, 50)
+
+r_main = 75
+r_relative = 55
+total_dist = r_main + r_relative + 10
+
+theta = np.linspace(0, 2 * turn * np.pi, turn*600)
+font_size = 5
+
+font = {'family': 'serif',
+        'color':  'green',
+        'weight': 'bold',
+        'size': font_size
+        }
+
 
 if r2 >= r3:
     speed = r1 + (r3 / r2)
+    plt.text(-total_dist-20, -total_dist+10, f"speed = {r1} + ({r3} / {r2})", fontdict=font)
 else:
     speed = r1 + (r2 / r3)
+    print()
+    plt.text(-total_dist-20, -total_dist+10, f"speed = {r1} + ({r2} / {r3})", fontdict=font)
 
-
-print("turn =", turn)
-print("speed =", speed)
-
-theta = np.arange(0, 2 * turn * np.pi, 0.003)
-r_main = 30
-r_relative = 30
+plt.text(-total_dist-20, -total_dist+10-font_size, f"speed = {speed}", fontdict=font)
+plt.text(-total_dist-20, -total_dist+10-2*font_size, f"turns = {turn}", fontdict=font)
 
 x = np.cos(theta) * r_main + np.cos(speed * theta) * r_relative
 y = np.sin(theta) * r_main + np.sin(speed * theta) * r_relative
 
-plt.plot(x, y, "g")
+plt.plot(x, y, "g", lw=0.2)
 plt.axis("equal")
 plt.axis("off")
-# plt.axis([-16.1, 16.1, -16.1, 16.1])
-plt.savefig(f"world101/output/figure{time_stamp}.png")
+plt.axis([-total_dist, total_dist, -total_dist, total_dist])
+plt.savefig(f"world101/output/figure{time_stamp}.png", dpi=600, bbox_inches='tight')
