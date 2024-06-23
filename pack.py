@@ -13,3 +13,9 @@ def what_is_the_os_type():
     else:
         # it returns 'windows' or 'linux'
         return os_type.lower()
+
+font = {'family': 'serif',
+        'color':  'green',
+        'weight': 'bold',
+        'size': 5
+        }
