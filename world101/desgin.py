@@ -7,10 +7,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-time_stamp = int(time.time())
-
 np.random.seed(0)
-turn = 60
+turn = 100
 
 r1 = random.randint(0, 9)
 r2 = random.randint(0, 50)
@@ -30,6 +28,8 @@ font = {'family': 'serif',
         }
 
 
+time_stamp = int(time.time())
+
 if r2 >= r3:
     speed = r1 + (r3 / r2)
     plt.text(-total_dist-20, -total_dist+10, f"speed = {r1} + ({r3} / {r2})", fontdict=font)
@@ -44,8 +44,9 @@ plt.text(-total_dist-20, -total_dist+10-2*font_size, f"turns = {turn}", fontdict
 x = np.cos(theta) * r_main + np.cos(speed * theta) * r_relative
 y = np.sin(theta) * r_main + np.sin(speed * theta) * r_relative
 
-plt.plot(x, y, "g", lw=0.2)
+plt.plot(x, y, "g", lw=0.1)
 plt.axis("equal")
 plt.axis("off")
 plt.axis([-total_dist, total_dist, -total_dist, total_dist])
 plt.savefig(f"world101/output/figure{time_stamp}.png", dpi=600, bbox_inches='tight')
+plt.clf()
