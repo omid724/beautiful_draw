@@ -38,9 +38,3 @@ def draw_world_1(r_main=75, r_relative = 55, turn = 100):
     plt.axis([-total_dist, total_dist, -total_dist, total_dist])
     plt.savefig(f"world101/output/figure{time_stamp}.png", dpi=600, bbox_inches='tight')
     plt.clf()
-
-
-if __name__ == "__main__":
-    print(__name__)
-
-    draw_world_1()
