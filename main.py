@@ -14,10 +14,11 @@ from world101 import desgin
 @click.command()
 @click.option("--count", default=1, help="number of figures")
 @click.option("--world-number", default=1, help="the world number")
-def draw(count, world_number):
+@click.option("--speed",type=float ,default=0)
+def draw(count, world_number, speed):
     if world_number == 1:
         for i in range(count):
-            desgin.draw_world_1()
+            desgin.draw_world_1(speed=speed)
             time.sleep(0.2)
 
 
